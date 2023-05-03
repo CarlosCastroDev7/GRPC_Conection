@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./proto";
+
+import "google/api/annotations.proto";
+
+service Json {
+  rpc Connection (JsonRequest) returns (JsonResponse) {
+    option (google.api.http) = {
+      post: "/json/response"
+      body: "*"
+    };
+  }
+}
+
+message JsonRequest {
+  string params = 1;
+}
+
+message JsonResponse {
+  string json = 1;
+}

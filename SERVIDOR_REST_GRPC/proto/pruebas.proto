@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./proto";
+
+import "google/api/annotations.proto";
+
+message response {
+    string message = 1;
+}
+
+message request {
+    string message = 1;
+}
+
+service pruebasgrpc {
+    rpc Saludar (request) returns (response) {
+        option (google.api.http) = {
+            post : "/prueba/saludar"
+            body: "*"
+        };
+    }
+}
